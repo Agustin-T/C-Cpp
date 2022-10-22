@@ -29,5 +29,37 @@
 
 // 11. Que pida un núemro entero y diga si el número es primo o no.
 void main(){
-    
+    int op;
+    int select;
+    printf("Start Promgram");
+    while (op){
+        printf("\n\nSelect any option(-1 Exit):\n");
+        printf("Exercise 1 \n");
+        printf("Exercise 2 \n");
+        printf("Exercise 3 \n");
+        printf("Exercise 4 \n");
+        printf("Exercise 5 \n");
+        printf("Exercise 6 \n");
+        printf("Exercise 6 \n");
+        printf("Exercise 7 \n");
+        printf("Exercise 8 \n");
+        printf("Exercise 9 \n");
+        printf("Exercise 10 \n");
+        printf("Exercise 11 \n");
+        printf("Select your option: ");
+        scanf("%i", &select);
+
+        if(select == 1){
+            for(int i=1; i<=100 ; i++){
+                printf("%i ", i);
+            }
+        }else if(select == -1){
+            printf("Program Finished");
+            break;
+        }else{
+            printf("The input value is not valid");
+        }
+    }
+
+    printf(" ");
 }
