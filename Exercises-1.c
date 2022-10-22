@@ -50,12 +50,32 @@ void main(){
         scanf("%i", &select);
 
         if(select == 1){
+
             for(int i=1; i<=100 ; i++){
+                //More organization in the console
+                if(i % 10 == 0){
+                    printf("\n");
+                }
                 printf("%i ", i);
             }  
+
         }else if(select == 2){
-            for(int i=100; i<=1 ; i--){
+
+            for(int i=100; i>=1 ; i--){
+                //More organization in the console
+                if(i % 10 == 0){
+                    printf("\n");
+                }
                 printf("%i ", i);
+
+            }
+        }else if(select == 3){
+
+            for(int i=1; i>=100 ; i++){
+                if(i % 2 == 0){
+                    printf("%i", i);
+                }
+
             }
         }else if(select == -1){
             printf("Program Finished");
@@ -65,5 +85,4 @@ void main(){
         }
     }
 
-    printf(" ");
 }
