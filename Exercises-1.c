@@ -71,9 +71,13 @@ void main(){
             }
         }else if(select == 3){
 
-            for(int i=1; i>=100 ; i++){
+            for(int i=1; i<=100 ; i++){
+                //More organization in the console  
                 if(i % 2 == 0){
-                    printf("%i", i);
+                    printf("%i ", i);
+                }
+                if(i % 10 == 0){
+                    printf("\n");
                 }
 
             }
