@@ -113,6 +113,26 @@ void main(){
             for(int i=min; i <=may; i++){
                 printf("%i ", i);
             }
+        }else if(select == 6){
+            int n1,n2;
+            int sum = 0;
+
+            printf("\nIngrese 2 numeros para mostrar sus intervalos \n");
+            printf("N1: ");
+            scanf("%i", &n1);
+            printf("N2: ");
+            scanf("%i", &n2);
+
+            if(n1<n2){
+                for(int i=n1; i<=n2; i++){
+                    printf("%i ",i);
+                    sum += i;
+                }
+                printf("La suma entre los valores ingresados es %i\n", sum);
+
+            }else{
+                printf("El primer numero ingresado no es menor al segundo, reintente");
+            }
         }else if(select == -1){
             printf("Program Finished");
             break;
