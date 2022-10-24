@@ -85,26 +85,31 @@ void main(){
             int impar= 0;
             for(int i=1; i<=100; i++){
                 if(i%2 == 1){
-                    
+                    printf("%i", i);
                     impar =+ i;
                 }
             }
-            printf("Suma de impares%i", impar);
+            printf("Suma de impares es %i", impar);
         }else if(select = 5){
             int n1, n2,may,min;
 
-            printf("Ingrese 2 numeros para mostrar sus intervalos \n");
+            printf("\nIngrese 2 numeros para mostrar sus intervalos \n");
+            printf("N1: ");
             scanf("%i", &n1);
-            printf("\n");
+            printf("N2: ");
             scanf("%i", &n2);
 
-            if(n1>n2){
+            if(n1<n2){
                 may = n2;
                 min = n1;
             }else{
                 may = n1;
                 min = n2;
             }
+            // TEST
+            printf("The major is %i\n", may);
+            printf("The menor is %i\n", min);
+
             for(int i=min; i <=may; i++){
                 printf("%i ", i);
             }
