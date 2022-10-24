@@ -90,7 +90,8 @@ void main(){
                 }
             }
             printf("Suma de impares es %i", impar);
-        }else if(select = 5){
+
+        }else if(select == 5){
             int n1, n2,may,min;
 
             printf("\nIngrese 2 numeros para mostrar sus intervalos \n");
@@ -113,6 +114,7 @@ void main(){
             for(int i=min; i <=may; i++){
                 printf("%i ", i);
             }
+
         }else if(select == 6){
             int n1,n2;
             int sum = 0;
@@ -126,7 +128,7 @@ void main(){
             if(n1<n2){
                 for(int i=n1; i<=n2; i++){
                     printf("%i ",i);
-                    sum += i;
+                    sum =+ i;
                 }
                 printf("La suma entre los valores ingresados es %i\n", sum);
 
