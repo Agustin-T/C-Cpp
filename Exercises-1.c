@@ -86,7 +86,7 @@ void main(){
             for(int i=1; i<=100; i++){
                 if(i%2 == 1){
                     printf("%i", i);
-                    impar =+ i;
+                    impar += i;
                 }
             }
             printf("Suma de impares es %i", impar);
@@ -128,9 +128,9 @@ void main(){
             if(n1<n2){
                 for(int i=n1; i<=n2; i++){
                     printf("%i ",i);
-                    sum =+ i;
+                    sum += i;
                 }
-                printf("La suma entre los valores ingresados es %i\n", sum);
+                printf("\nLa suma entre los valores ingresados es %i\n", sum);
 
             }else{
                 printf("El primer numero ingresado no es menor al segundo, reintente");
