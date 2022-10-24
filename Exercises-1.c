@@ -90,6 +90,24 @@ void main(){
                 }
             }
             printf("Suma de impares%i", impar);
+        }else if(select = 5){
+            int n1, n2,may,min;
+
+            printf("Ingrese 2 numeros para mostrar sus intervalos \n");
+            scanf("%i", &n1);
+            printf("\n");
+            scanf("%i", &n2);
+
+            if(n1>n2){
+                may = n2;
+                min = n1;
+            }else{
+                may = n1;
+                min = n2;
+            }
+            for(int i=min; i <=may; i++){
+                printf("%i ", i);
+            }
         }else if(select == -1){
             printf("Program Finished");
             break;
