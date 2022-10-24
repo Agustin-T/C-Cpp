@@ -135,6 +135,76 @@ void main(){
             }else{
                 printf("El primer numero ingresado no es menor al segundo, reintente");
             }
+        }else if(select == 7){
+            // int a;
+
+            // printf("\nIngrese un numero entre 1 y 80: \n");
+            // scanf("%i", &a);
+            
+            // if(a>=1 && a<=80){
+            //     for(int i=1; i<=a; i++){
+            //         printf("* ");
+            //         //Orden
+            //         if(i%10 == 0){
+            //             printf("\n");
+            //         }
+            //     }
+            //     printf("\nWork");
+            // }
+            // else{
+            //     printf("\nLos valores ingresados son incorrectos \n");
+            // }
+            
+        }else if(select == 8){
+            for(int i=1; i<=100 ; i++){
+                //More organization in the console
+                if(i % 10 == 0){
+                    printf("\n");
+                }
+                printf("%i ", i);
+            }  
+        }else if(select == 9){
+            // int a, table;
+
+            // printf("\nIngrese un numero del 1 al 10:\n");
+            // scanf("%i", &a);
+
+            // printf("Table del %i: \n",a);
+            // for(int i=1; i>=10; i++){
+            //     table = a * i;
+            //     printf("%i ", table);
+            // }
+        }else if(select == 10){
+            // int f, calc, cont;
+
+            // printf("\nIngrese un numero para calcular su factorial: \n");
+            // scanf("%i", f);
+
+            // while(cont != f){
+            //     calc *=f;
+            //     cont++;
+            // }
+            // printf("\nEl factorial de %i es %i",f, calc);
+        }else if(select == 11){
+            //Recorre desde el 2 hasta el valor que sea para averiguar si existe otro divisor
+            // int p, div;
+
+            // printf("\nIngrese un valor para averiguar si es primo: \n");
+            // scanf("%i", &p);
+
+            // if(p<=1){
+            //     for(int i = 2;i <=p; i++){
+            //         div = p % i;
+            //         if(div == 0){
+            //             printf("\n El numero %i 'SI' es primo", p);
+            //         }else{
+            //             printf("\n El numero %i 'NO' es primo", p);
+            //         }
+            //     printf("\n El numero %i 'SI' es primo", p);
+            //     }
+            // }else{
+            //     printf("\n El numero %i 'NO' es primo", p);
+            // }
         }else if(select == -1){
             printf("Program Finished");
             break;
