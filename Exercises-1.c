@@ -81,6 +81,15 @@ void main(){
                 }
 
             }
+        }else if(select == 4){
+            int impar= 0;
+            for(int i=1; i<=100; i++){
+                if(i%2 == 1){
+                    
+                    impar =+ i;
+                }
+            }
+            printf("Suma de impares%i", impar);
         }else if(select == -1){
             printf("Program Finished");
             break;
