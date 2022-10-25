@@ -174,16 +174,20 @@ void main(){
                 printf("> %i x %i = %i\n",a, i, table);
             }
         }else if(select == 10){
-            // int f, calc, cont;
+            int f, cont; 
+            int i = 1;
 
-            // printf("\nIngrese un numero para calcular su factorial: \n");
-            // scanf("%i", f);
+            printf("\nIngrese un numero para calcular su factorial: \n");
+            scanf("%i", &f);
 
-            // while(cont != f){
-            //     calc *=f;
-            //     cont++;
-            // }
-            // printf("\nEl factorial de %i es %i",f, calc);
+            cont = f;
+           do{
+                cont *= f;
+                i++;
+           }while(i != f);
+
+            printf("\nEl factorial de %i es %i",f, cont);
+
         }else if(select == 11){
             //Recorre desde el 2 hasta el valor que sea para averiguar si existe otro divisor
             // int p, div;
