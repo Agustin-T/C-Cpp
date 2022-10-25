@@ -29,23 +29,22 @@
 
 // 11. Que pida un núemro entero y diga si el número es primo o no.
 void main(){
-    int op;
     int select;
     printf("Start Promgram");
-    while (op){
+    while (select != 12){
         printf("\n\nSelect any option(-1 Exit):\n");
-        printf("Exercise 1 \n");
-        printf("Exercise 2 \n");
-        printf("Exercise 3 \n");
-        printf("Exercise 4 \n");
-        printf("Exercise 5 \n");
-        printf("Exercise 6 \n");
-        printf("Exercise 6 \n");
-        printf("Exercise 7 \n");
-        printf("Exercise 8 \n");
-        printf("Exercise 9 \n");
-        printf("Exercise 10 \n");
-        printf("Exercise 11 \n");
+        printf("> 1 -Exercise 1 \n");
+        printf("> 2 -Exercise 2 \n");
+        printf("> 3 -Exercise 3 \n");
+        printf("> 4 -Exercise 4 \n");
+        printf("> 5 -Exercise 5 \n");
+        printf("> 6 -Exercise 6 \n");
+        printf("> 7 -Exercise 7 \n");
+        printf("> 8 -Exercise 8 \n");
+        printf("> 9 -Exercise 9 \n");
+        printf("> 10 -Exercise 10 \n");
+        printf("> 11 -Exercise 11 \n");
+        printf("> 12 -Exit \n");
         printf("Select your option: ");
         scanf("%i", &select);
 
@@ -190,30 +189,28 @@ void main(){
 
         }else if(select == 11){
             //Recorre desde el 2 hasta el valor que sea para averiguar si existe otro divisor
-            // int p, div;
+            int p, div;
 
-            // printf("\nIngrese un valor para averiguar si es primo: \n");
-            // scanf("%i", &p);
+            printf("\nIngrese un valor para averiguar si es primo: \n");
+            scanf("%i", &p);
 
-            // if(p<=1){
-            //     for(int i = 2;i <=p; i++){
-            //         div = p % i;
-            //         if(div == 0){
-            //             printf("\n El numero %i 'SI' es primo", p);
-            //         }else{
-            //             printf("\n El numero %i 'NO' es primo", p);
-            //         }
-            //     printf("\n El numero %i 'SI' es primo", p);
-            //     }
-            // }else{
-            //     printf("\n El numero %i 'NO' es primo", p);
-            // }
-        }else if(select == -1){
-            printf("Program Finished");
-            break;
+            if(p == 1){
+                printf("\nEl numero %i 'NO' es primo", p);
+            }else if(p >= 2){
+                for(int i=1; i >= p; i++){
+                    div = p % i;
+
+                    if(div != 0){
+                        printf("\nEl numero %i 'NO' es primo", p);
+                        break;
+                    }
+                }
+                printf("\nEl numero %i 'SI' es primo", p);
+            }
         }else{
             printf("The input value is not valid");
         }
     }
+    printf("Program Finished");
 
 }
