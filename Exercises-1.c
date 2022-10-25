@@ -136,24 +136,23 @@ void main(){
                 printf("El primer numero ingresado no es menor al segundo, reintente");
             }
         }else if(select == 7){
-            // int a;
+            int a;
 
-            // printf("\nIngrese un numero entre 1 y 80: \n");
-            // scanf("%i", &a);
+            printf("\nIngrese un numero entre 1 y 80: \n");
+            scanf("%i", &a);
             
-            // if(a>=1 && a<=80){
-            //     for(int i=1; i<=a; i++){
-            //         printf("* ");
-            //         //Orden
-            //         if(i%10 == 0){
-            //             printf("\n");
-            //         }
-            //     }
-            //     printf("\nWork");
-            // }
-            // else{
-            //     printf("\nLos valores ingresados son incorrectos \n");
-            // }
+            if(a>=1 && a<=80){
+                for(int i=1; i<=a; i++){
+                    printf("* ");
+                    //Orden
+                    if(i%10 == 0){
+                        printf("\n");
+                    }
+                }
+            }
+            else{
+                printf("\nLos valores ingresados son incorrectos \n");
+            }
             
         }else if(select == 8){
             for(int i=1; i<=100 ; i++){
