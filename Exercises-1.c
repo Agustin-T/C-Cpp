@@ -163,16 +163,16 @@ void main(){
                 printf("%i ", i);
             }  
         }else if(select == 9){
-            // int a, table;
+            int a, table;
 
-            // printf("\nIngrese un numero del 1 al 10:\n");
-            // scanf("%i", &a);
+            printf("\nIngrese un numero del 1 al 10:\n");
+            scanf("%i", &a);
 
-            // printf("Table del %i: \n",a);
-            // for(int i=1; i>=10; i++){
-            //     table = a * i;
-            //     printf("%i ", table);
-            // }
+            printf("Tabla del %i: \n",a);
+            for(int i=1; i<=10; i++){
+                table = a * i;
+                printf("> %i x %i = %i\n",a, i, table);
+            }
         }else if(select == 10){
             // int f, calc, cont;
 
