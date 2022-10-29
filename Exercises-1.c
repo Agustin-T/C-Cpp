@@ -33,17 +33,17 @@ void main(){
     printf("Start Promgram");
     while (select != 12){
         printf("\n\nSelect any option(-1 Exit):\n");
-        printf("> 1 -Exercise 1 \n");
-        printf("> 2 -Exercise 2 \n");
-        printf("> 3 -Exercise 3 \n");
-        printf("> 4 -Exercise 4 \n");
-        printf("> 5 -Exercise 5 \n");
-        printf("> 6 -Exercise 6 \n");
-        printf("> 7 -Exercise 7 \n");
-        printf("> 8 -Exercise 8 \n");
-        printf("> 9 -Exercise 9 \n");
-        printf("> 10 -Exercise 10 \n");
-        printf("> 11 -Exercise 11 \n");
+        printf("> 1 -Muestre del 1 al 100 \n");
+        printf("> 2 -Muestre los numeros del 100 al 1 \n");
+        printf("> 3 -Muestre numeros pares del 1 al 100 \n");
+        printf("> 4 -Muestre suma de todos los numeros impares 1 al 100 \n");
+        printf("> 5 -Mostrar intervalo entre numeros ingresados \n");
+        printf("> 6 -Suma de numeros entre dos numeros a ingresar \n");
+        printf("> 7 -Mostrar cantidad de asteriscos entre 1 y 80 \n");
+        printf("> 8 -Tabla de numeros del 1 al 10 \n");
+        printf("> 9 -Tabla de multiplicacion del 1 al 10 \n");
+        printf("> 10 -Calcular numero factorial \n");
+        printf("> 11 -Testeo de numero primo \n");
         printf("> 12 -Exit \n");
         printf("Select your option: ");
         scanf("%i", &select);
@@ -200,6 +200,7 @@ void main(){
                 for(int i=1; i >= p; i++){
                     div = p % i;
 
+                    printf("%i", div);
                     if(div != 0){
                         printf("\nEl numero %i 'NO' es primo", p);
                         break;
