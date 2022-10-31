@@ -1,4 +1,5 @@
-// Usted se desempeña como programador en la empresa “Auto Plus” y deberá desarrollar un programa para automatizar un proceso de producción de piezas metálicas que necesitan ser sometidas a distintos procesos como se detalla a continuación.
+// Usted se desempeña como programador en la empresa “Auto Plus” y deberá desarrollar un programa para automatizar un proceso de producción de piezas metálicas que necesitan ser 
+// sometidas a distintos procesos como se detalla a continuación.
 // El programa debe tener un menú principal con las opciones para:
 // 1-	Ciclo de Lavado Manual
 // 2-	Ciclo Automático de Pintura Base
@@ -11,8 +12,14 @@
 // 3-	Salir del programa
 // Ingrese una opción (1, 2 o 3):
 
-// Ciclo de Lavado Manual: en este proceso cada pieza es sometida a un lavado desengrasante durante cierto tiempo y luego pasa a un proceso de secado en horno durante otro tiempo, terminado el tiempo de secado el ciclo finaliza. La ejecución de ciclo comienza con el ingreso por parte del usuario del tiempo de lavado, que estará comprendido entre 30 y 60 segundos, a continuación, el usuario deberá ingresar el tiempo de secado, entre 20 y 90 segundos. Ambos valores deben ser controlados por el programa que no debe permitir continuar hasta que los valores no cumplan con las condiciones establecidas. Después de ingresar los dos valores solicitados el programa esperará que el operario presione la tecla “Enter” para comenzar el ciclo.
-// Una vez iniciado el ciclo el programa informará por medio de mensajes apropiados el estado del proceso respetando los tiempos establecidos para cada operación. Al finalizar el ciclo, el programa mostrará el tiempo total empleado y la potencia consumida por cada etapa, la bomba eléctrica para el lavado consume 5W por segundo y el horno eléctrico de secado consume 12W por segundo.
+// Ciclo de Lavado Manual: en este proceso cada pieza es sometida a un lavado desengrasante durante cierto tiempo y luego pasa a un proceso de secado en horno durante otro tiempo, 
+// terminado el tiempo de secado el ciclo finaliza. La ejecución de ciclo comienza con el ingreso por parte del usuario del tiempo de lavado, que estará comprendido entre 30 y 60 
+// segundos, a continuación, el usuario deberá ingresar el tiempo de secado, entre 20 y 90 segundos. Ambos valores deben ser controlados por el programa que no debe permitir 
+// continuar hasta que los valores no cumplan con las condiciones establecidas. Después de ingresar los dos valores solicitados el programa esperará que el operario presione la 
+// tecla “Enter” para comenzar el ciclo.
+// Una vez iniciado el ciclo el programa informará por medio de mensajes apropiados el estado del proceso respetando los tiempos establecidos para cada operación. Al finalizar 
+// el ciclo, el programa mostrará el tiempo total empleado y la potencia consumida por cada etapa, la bomba eléctrica para el lavado consume 5W por segundo y el horno eléctrico 
+// de secado consume 12W por segundo.
 // Ejemplo: si ingresa 30 segundos para el lavado y 20 segundos para el secado, el programa mostrará estos mensajes por pantalla:
 // Presione <Enter> para iniciar el ciclo
 // Iniciando proceso de lavado …
@@ -45,6 +52,56 @@
 
 #include<stdio.h>
 
+// estetica al promgrama
+void ast(int type){
+    int n;
+    // asteriscos
+    if (type==1){
+        printf("\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
+    }
+    // hastag
+    if (type==2){
+        printf("\n--------------------------------------------------------------------------------\n");
+    // barras
+    }
+    if (type==3){
+        printf("\n////////////////////////////////////////////////////////////////////////////////\n");
+    }
+
+}
+
 void main(){
-    
+    int op;
+
+    printf("Programa de Auto Plus ejecutandose\n");
+    ast(2);
+    while (op){
+        // menu principal
+        ast(3);
+        printf("\n> 1-Ciclo de lavado manual");
+        printf("\n> 2-Ciclo automatizado de pintura base");
+        printf("\n> 3-Salir del promgrama");
+        printf("\n> Ingrese una opcion (1, 2 o 3):\n> ");
+        scanf("%i", &op);
+        ast(3);
+
+        if(op == 1){
+            printf("\nAction 1\n");
+        }
+        else if(op == 2){
+            printf("\nAction 2\n");
+        }
+        else if(op == 3){
+            ast(1);
+            printf("\nSaliendo del programa...\n");
+            ast(1);
+            break;
+        }
+        else{
+            ast(1);
+            printf("\nValor Incorrecto, intente de nuevo\n");
+            ast(1);
+        }
+    }
+
 }
