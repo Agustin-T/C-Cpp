@@ -20,6 +20,7 @@
 // Una vez iniciado el ciclo el programa informará por medio de mensajes apropiados el estado del proceso respetando los tiempos establecidos para cada operación. Al finalizar 
 // el ciclo, el programa mostrará el tiempo total empleado y la potencia consumida por cada etapa, la bomba eléctrica para el lavado consume 5W por segundo y el horno eléctrico 
 // de secado consume 12W por segundo.
+
 // Ejemplo: si ingresa 30 segundos para el lavado y 20 segundos para el secado, el programa mostrará estos mensajes por pantalla:
 // Presione <Enter> para iniciar el ciclo
 // Iniciando proceso de lavado …
@@ -52,9 +53,9 @@
 
 #include<stdio.h>
 
+
 // estetica al promgrama
 void ast(int type){
-    int n;
     // asteriscos
     if (type==1){
         printf("\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
@@ -69,12 +70,61 @@ void ast(int type){
     }
 
 }
+int datos(int n1, int n2, char e){
+     
+}
+
+void manual(){
+    int tLavado, tSecado, wLavado, wSecado, tPotencia, enter;
+
+    int op2;
+    while(op2){
+        printf("> Ingrese el tiempo de lavado (entre 30 y 60 segundos ):\n> ");
+        scanf("%i", &tLavado);
+        printf("> Ingrese el tiempo de secado (entre 20 y 90 segundos):\n> ");
+        scanf("%i", &tSecado);
+        if(tLavado >= 30 && tLavado <= 60 && tSecado >= 20 && tSecado <= 90){
+            printf("-- valores ingresados incorrectos--");
+            break;
+            
+        }else{
+           continue; 
+        }
+        
+           
+    } 
+
+    printf("\n- Presione <Enter> para iniciar el ciclo");
+    scanf("%c", &enter); 
+
+    wLavado = tLavado * 5;
+    wSecado = tSecado * 12;
+    tPotencia = wLavado + wSecado;
+
+    ast(2);
+    printf("\nProceso de lavado de inicializado\n");
+    printf("\nDelay\n");
+    printf("\nProceso de lavado de finalizado\n");
+    ast(2);
+    printf("\nProceso de secado de inicializado\n");
+    printf("\nDelay\n");
+    printf("\nProceso de secado de finalizado\n");
+    ast(2);
+    printf("Ciclo finalizado\n");
+    printf("Tiempo de lavado aplicado: %i\n", tLavado);
+    printf("Tiempo de lavado aplicado: %i\n", tSecado);
+    printf("Total de potenca: %i\n", tPotencia);
+    printf("Potencia de lavado: %i\n", wLavado);
+    printf("Potencia de Secado: %i\n", wSecado);
+    printf("> - Presione <Enter> para iniciar el ciclo");
+    scanf("%c", &enter);
+}
 
 void main(){
     int op;
 
     printf("Programa de Auto Plus ejecutandose\n");
-    ast(2);
+    ast(1);
     while (op){
         // menu principal
         ast(3);
@@ -86,10 +136,16 @@ void main(){
         ast(3);
 
         if(op == 1){
-            printf("\nAction 1\n");
+            ast(2);
+            printf("\nLavado desengrazante\n");
+            ast(2);
+            manual();
+            
         }
         else if(op == 2){
+            ast(2);
             printf("\nAction 2\n");
+            ast(2);
         }
         else if(op == 3){
             ast(1);
