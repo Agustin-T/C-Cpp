@@ -189,24 +189,34 @@ void main(){
 
         }else if(select == 11){
             //Recorre desde el 2 hasta el valor que sea para averiguar si existe otro divisor
-            int p, div;
+            int p, flag;
+            int div = 0;
 
             printf("\nIngrese un valor para averiguar si es primo: \n");
             scanf("%i", &p);
 
-            if(p == 1){
-                printf("\nEl numero %i 'NO' es primo", p);
-            }else if(p >= 2){
-                for(int i=1; i >= p; i++){
-                    div = p % i;
-
-                    printf("%i", div);
-                    if(div != 0){
-                        printf("\nEl numero %i 'NO' es primo", p);
-                        break;
+            printf("TEST_CONT : \n");
+            if(p >= 0){
+                for(int i=1; i <= p; i++){  
+                    flag = p - i;
+                    if((p% i != 0 && flag != 0) || (p%i == 0 && flag == 0)){
+                        div += 1;
                     }
+
+                    //TESTING
+                    printf("%i ", i);  
+                    printf(" %i \n", div);
+
                 }
-                printf("\nEl numero %i 'SI' es primo", p);
+                if(div == 0 && p != 1 && p != 2){
+                    printf("\nEl numero %i 'Si' es primo", p);
+ 
+                }else{
+                    printf("\nEl numero %i 'NO' es primo", p);              
+                }
+                
+            }else{
+                printf("\nEl numero es negativo");
             }
         }else{
             printf("The input value is not valid");
