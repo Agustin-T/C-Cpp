@@ -1,13 +1,8 @@
 #include <stdio.h>
 #include <string.h> // fflush()
-
-
-#include <stdlib.h> // (sleep)
-
+#include <time.h> // clock()
 
 // Opcion 1
-
-
 
 // int barraCarga(){
 //     for(float  i = 0; i < 10000; i++){
@@ -18,32 +13,73 @@
 // }
 
 
-
 // Opcion 2
 
-// int barraCarga(){
-//     printf("\r En proceso ..\n");
-//     printf("En proceso 00.00%%");
-//     for(float i = 0; i <= 10000; i++ ){
-//             printf("\b\b\b\b\b");
-//             fflush(stdout);
-//             sleep(10);
+// void barraCarga(){
+//     clock_t begin, end;
+//     double time_spent;
+//     unsigned int i;
+
+//     begin = clock();
+//     time_spent = (double)begin / CLOCKS_PER_SEC;
+
+//     for(i = 0; 1; i++){
+//         printf("hello \n");
+//         time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+//         if(time_spent == 5.0){
+//             break;
+//         }
 //     }
+
+//     printf("Number of iterations completed in 5 CPU(?) seconds = %d.\n");
+//     return 0;
+// }
+
+// Opcion 2.1
+
+void barraCarga(){
+    clock_t begin, end;
+    double time_spent;
+    unsigned int i;
+
+    begin = clock();
+    time_spent = (double)begin / CLOCKS_PER_SEC;
+
+    while(i){
+        printf("hello \n");
+        time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+        if(time_spent == 5.0){
+            break;
+        }
+        i++;
+    }
+
+    printf("Number of iterations completed in 5 CPU(?) seconds = %d.\n");
+    return 0;
+}
+
+// void barraCarga(int tiempo){
+
+//     // 1000 = 1s
+//     int conversion = tiempo * 10000;
+
+//     printf("\n > 'Proceso'");
+//     for (float i = 0; i <= conversion; i++){
+//         printf("\r En ejecucion: %.2f%%", i/100);
+//         fflush(stdout);
+//         }
 //     printf("\n");
 // }
 
-void barraCarga(){
-    // 1000 = 1s
-    printf("\n > 'Proceso'");
-    for (float i = 0; i <= 10000; i++){
-        
-        printf("\r En ejecucion: %.2f%%", i);
-        fflush(stdout);
-        
-        }
-    printf("\n");
-}
-
 void main(){
+    
+    // carga de datos
+    // int a;
+
+    // printf("TEST\n");
+    // printf("- Ingreese la cantidad de tiempo que se usar:\n> ");
+    // scanf("%i", &a);
+    // barraCarga(a);
+
     barraCarga();
 }

@@ -55,24 +55,10 @@
 // https://es.acervolima.com/como-crear-una-barra-de-progreso-de-linea-de-comandos-en-c-c/
 
 #include <stdio.h>
-
-
-void barraCarga(){
-    for (float i = 0; i < 10000; i++){
-        rintf("\r DOING THIS thing ... In progress  %.2f%%", i/100);
-        fflush(stdout);
-        }
-    printf("\n");
-}
-
-
-
 //#include<windows.h> uso en S.O Windows
 
+
 // estetica al promgrama
-
-
-
 void ast(int type){
     // asteriscos
     if (type==1){
