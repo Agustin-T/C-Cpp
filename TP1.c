@@ -51,10 +51,28 @@
 // - Controlar los tiempos de espera.
 // El proyecto llevará el nombre del alumno y deberá entregarse dentro del plazo establecido por el docente de la materia.
 
-#include<stdio.h>
+// link to input icon upload
+// https://es.acervolima.com/como-crear-una-barra-de-progreso-de-linea-de-comandos-en-c-c/
 
+#include <stdio.h>
+
+
+void barraCarga(){
+    for (float i = 0; i < 10000; i++){
+        rintf("\r DOING THIS thing ... In progress  %.2f%%", i/100);
+        fflush(stdout);
+        }
+    printf("\n");
+}
+
+
+
+//#include<windows.h> uso en S.O Windows
 
 // estetica al promgrama
+
+
+
 void ast(int type){
     // asteriscos
     if (type==1){
@@ -95,11 +113,19 @@ void manual(){
 
     ast(2);
     printf("\nProceso de lavado de inicializado\n");
-    printf("\nDelay\n");
+    
+    windows("color 1A");
+    char a = 177, b = 219;
+    printf("\n\n\n\n\n");
+    printf("> Ejecutandose..");
+
+    //Sleep(tLavado * 1000); Windows
     printf("\nProceso de lavado de finalizado\n");
     ast(2);
     printf("\nProceso de secado de inicializado\n");
-    printf("\nDelay\n");
+    windows("color 1A");
+    
+    // Sleep(tSecado * 1000);
     printf("\nProceso de secado de finalizado\n");
     ast(2);
     printf("\nCiclo finalizado\n");
