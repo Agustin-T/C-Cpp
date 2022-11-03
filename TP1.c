@@ -51,9 +51,6 @@
 // - Controlar los tiempos de espera.
 // El proyecto llevará el nombre del alumno y deberá entregarse dentro del plazo establecido por el docente de la materia.
 
-// link to input icon upload
-// https://es.acervolima.com/como-crear-una-barra-de-progreso-de-linea-de-comandos-en-c-c/
-
 #include <stdio.h>
 //#include<windows.h> uso en S.O Windows
 #include <stdlib.h>
@@ -89,7 +86,7 @@ void barraCarga(float t){
 }
 
 void manual(){
-    float tLavado, tSecado, wLavado, wSecado, tPotencia, enter;
+    float tLavado, tSecado, wLavado, wSecado, tPotencia, tecla;
     int op2;
 
     while(op2){
@@ -104,30 +101,71 @@ void manual(){
     } 
 
     printf("\n- Presione <Enter> para iniciar el ciclo");
-    scanf("%c", &enter); 
+    scanf("%f", &tecla); 
 
     wLavado = tLavado * 5;
     wSecado = tSecado * 12;
     tPotencia = wLavado + wSecado;
 
     ast(2);
-    printf("\nProceso de lavado de inicializado\n");
+    printf("\nProceso de lavado de INICIALIZADO\n");
     barraCarga(tLavado);
-    printf("\nProceso de lavado de finalizado\n");
+    printf("\nProceso de lavado de FINALIZADO\n");
     ast(2);
-    printf("\nProceso de secado de inicializado\n");
+    printf("\nProceso de secado de INICIALIZADO\n");
     barraCarga(tSecado);
-    printf("\nProceso de secado de finalizado\n");
+    printf("\nProceso de secado de FINALIZADO\n");
     ast(2);
 
-    printf("\nCiclo finalizado\n");
+    printf("\nCICLO FINALZADO\n");
     printf("Tiempo de lavado aplicado: %.0f\n", tLavado, " Segundos");
     printf("Tiempo de secado aplicado: %.0f\n", tSecado, " Segundos");
     printf("Total de potenca: %.2f\n", tPotencia, " Wats");
     printf("Potencia de lavado: %.2f\n", wLavado, " Wats");
     printf("Potencia de Secado: %.2f\n", wSecado, " Wats");
     printf("\n> - Presione <Enter> para iniciar el ciclo");
-    scanf("%c", &enter);
+    scanf("%f", &tecla);
+}
+
+void automatico(){
+    
+    float tecla;
+    int op3;
+    while(op3){
+        printf("\n");
+        printf("\n - Baño decapante de la pieza, tiempo: 20 segundos");
+        printf("\n - Lavado desengrasante, tiempo: 35 segundos");
+        printf("\n - Secado en horno, tiempo 20 segundos");
+        printf("\n - Aplicar pintura base, tiempo 15 segundos");
+        printf("\n> Ingrese <Enter> para iniciar o <Esc> para salir\n >");
+        scanf("%f", &tecla);
+
+        ast(2);
+        printf("\n Baño decapante de la pieza INCIALIZADO\n");
+        barraCarga(20);
+        printf("\n Baño decapante de la pieza FINALIZADO\n");
+        ast(2);
+        printf("\n Lavado desengrasante INCIALIZADO\n");
+        barraCarga(35);
+        printf("\n Lavado desengrasante FINALIZADO\n");
+        ast(2);
+        printf("\n Secado en horno INCIALIZADO\n");
+        barraCarga(20);
+        printf("\n Secado en horno FINALIZADO\n");
+        ast(2);
+        printf("\n Aplicado de pintura base, INCIALIZADO\n");
+        barraCarga(15);
+        printf("\n Aplicado de pintura base, FINALIZADO\n");
+        ast(2);
+
+        printf("\n\n Desea repetir esta accion? \n <Enter> para si || <Esc> para salir\n> ");
+        scanf("%f", tecla);
+        if(tecla == 1/*esc*/){
+            break;
+        }
+    }
+    
+
 }
 
 void main(){
@@ -147,19 +185,20 @@ void main(){
 
         if(op == 1){
             ast(2);
-            printf("\nLavado desengrazante");
+            printf("\nLavado Manual");
             ast(2);
             manual();
             
         }
         else if(op == 2){
             ast(2);
-            printf("\nAction 2");
+            printf("\nLavado Automatico");
             ast(2);
+            automatico();
         }
         else if(op == 3){
             ast(1);
-            printf("\nSaliendo del programa...\n");
+            printf("\n\nSaliendo del programa...\n");
             ast(1);
             break;
         }
