@@ -56,6 +56,7 @@
 
 #include <stdio.h>
 //#include<windows.h> uso en S.O Windows
+#include <stdlib.h>
 
 
 // estetica al promgrama
@@ -75,15 +76,27 @@ void ast(int type){
 
 }
 
+void barraCarga(float t){
+
+    float porcentaje = 100 / t;
+    float cont = 0;
+
+    for(float i = 0; i <= t; i++){
+        printf("\r En proceso %.2f%%", cont);
+        sleep(1);
+        cont += porcentaje;
+    }
+}
+
 void manual(){
-    int tLavado, tSecado, wLavado, wSecado, tPotencia, enter;
+    float tLavado, tSecado, wLavado, wSecado, tPotencia, enter;
     int op2;
 
     while(op2){
         printf("\n> Ingrese el tiempo de lavado (entre 30 y 60 segundos ):\n> ");
-        scanf("%i", &tLavado);
+        scanf("%f", &tLavado);
         printf("\n> Ingrese el tiempo de secado (entre 20 y 90 segundos):\n> ");
-        scanf("%i", &tSecado);
+        scanf("%f", &tSecado);
         if(tLavado >= 30 && tLavado <= 60 && tSecado >= 20 && tSecado <= 90){
             break;
         }
@@ -99,27 +112,20 @@ void manual(){
 
     ast(2);
     printf("\nProceso de lavado de inicializado\n");
-    
-    windows("color 1A");
-    char a = 177, b = 219;
-    printf("\n\n\n\n\n");
-    printf("> Ejecutandose..");
-
-    //Sleep(tLavado * 1000); Windows
+    barraCarga(tLavado);
     printf("\nProceso de lavado de finalizado\n");
     ast(2);
     printf("\nProceso de secado de inicializado\n");
-    windows("color 1A");
-    
-    // Sleep(tSecado * 1000);
+    barraCarga(tSecado);
     printf("\nProceso de secado de finalizado\n");
     ast(2);
+
     printf("\nCiclo finalizado\n");
-    printf("Tiempo de lavado aplicado: %i\n", tLavado);
-    printf("Tiempo de lavado aplicado: %i\n", tSecado);
-    printf("Total de potenca: %i\n", tPotencia);
-    printf("Potencia de lavado: %i\n", wLavado);
-    printf("Potencia de Secado: %i\n", wSecado);
+    printf("Tiempo de lavado aplicado: %.0f\n", tLavado, " Segundos");
+    printf("Tiempo de secado aplicado: %.0f\n", tSecado, " Segundos");
+    printf("Total de potenca: %.2f\n", tPotencia, " Wats");
+    printf("Potencia de lavado: %.2f\n", wLavado, " Wats");
+    printf("Potencia de Secado: %.2f\n", wSecado, " Wats");
     printf("\n> - Presione <Enter> para iniciar el ciclo");
     scanf("%c", &enter);
 }

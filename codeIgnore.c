@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h> // fflush()
 #include <time.h> // clock()
+#include <stdlib.h> // Sleep();
 
 // Opcion 1
 
@@ -37,26 +38,29 @@
 
 // Opcion 2.1
 
-void barraCarga(){
-    clock_t begin, end;
-    double time_spent;
-    unsigned int i;
+// void barraCarga(){
+//     clock_t begin, end;
+//     double time_spent;
+//     unsigned int i;
 
-    begin = clock();
-    time_spent = (double)begin / CLOCKS_PER_SEC;
+//     begin = clock();
+//     time_spent = (double)begin / CLOCKS_PER_SEC;
 
-    while(i){
-        printf("hello \n");
-        time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-        if(time_spent == 5.0){
-            break;
-        }
-        i++;
-    }
+//     while(i){
+//         printf("hello \n");
+//         time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+//         if(time_spent == 5.0){
+//             break;
+//         }
+//         i++;
+//     }
 
-    printf("Number of iterations completed in 5 CPU(?) seconds = %d.\n");
-    return 0;
-}
+//     printf("Number of iterations completed in 5 CPU(?) seconds = %d.\n");
+//     return 0;
+// }
+
+
+//Opcion 3
 
 // void barraCarga(int tiempo){
 
@@ -71,15 +75,31 @@ void barraCarga(){
 //     printf("\n");
 // }
 
+//Option temporal con "windwos"
+
+void barraCarga(float t){
+
+    float porcentaje = 100 / t;
+    float cont = 0;
+
+    for(float i = 0; i <= t; i++){
+        printf("\r En proceso %.2f%%", cont);
+        sleep(1);
+        cont += porcentaje;
+    }
+}
+
+
+
 void main(){
     
     // carga de datos
-    // int a;
+    int a;
 
-    // printf("TEST\n");
-    // printf("- Ingreese la cantidad de tiempo que se usar:\n> ");
-    // scanf("%i", &a);
-    // barraCarga(a);
+    printf("TEST\n");
+    printf("- Ingreese la cantidad de tiempo(s) que se usar:\n> ");
+    scanf("%i", &a);
+    barraCarga(a);
 
-    barraCarga();
+    // barraCarga();
 }
