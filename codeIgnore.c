@@ -2,6 +2,7 @@
 #include <string.h> // fflush()
 #include <time.h> // clock()
 #include <stdlib.h> // Sleep();
+#include <conio.h> // strings
 
 // Opcion 1
 
@@ -79,15 +80,36 @@
 
 void barraCarga(float t){
 
+    // █ = ALT + 219
+    const char LOAD [11]= "██████████";
+    int j = 1;
     float porcentaje = 100 / t;
     float cont = 0;
-
+    int cantBarra = 0;
+    int bef = 0;
+    int esp = 0;
+    
     for(float i = 0; i <= t; i++){
-        printf("\r En proceso %.2f%%", cont);
+        printf("\r En proceso %3.2f%%  |%c", cont,LOAD[j]); 
+        if(cont <= 10 * j){
+            j++;
+        }
         sleep(1);
         cont += porcentaje;
     }
 }
+
+// void barraCarga(float t){
+
+//     float porcentaje = 100 / t;
+//     float cont = 0;
+
+//     for(float i = 0; i <= t; i++){
+//         printf("\r En proceso %.2f%%", cont);
+//         sleep(1);
+//         cont += porcentaje;
+//     }
+// }
 
 
 
