@@ -40,8 +40,12 @@
 // 3-	Secado en horno, tiempo 20 segundos
 // 4-	Aplicar pintura base, tiempo 15 segundos
 // Al seleccionar esta opción del menú principal el programa esperará que el usuario presione la tecla “Enter” para iniciar el ciclo.
-// Una vez iniciado el ciclo el programa informará por medio de mensajes apropiados el estado del proceso respetando los tiempos establecidos para cada operación (igual que en el caso del lavado). Después de completar el ciclo debe volver a mostrar el menú principal.
-// Importante: en todos los ciclos de espera el programa debe poder detectar la pulsación de la tecla Escape (ESC), cuando esto ocurra el programa debe pasar inmediatamente a la siguiente etapa del ciclo o finalizarlo si ya se encuentra en la última etapa. Si se trata del ciclo manual los totales informados deben ajustarse a los tiempos reales de cada etapa.
+// Una vez iniciado el ciclo el programa informará por medio de mensajes apropiados el estado del proceso respetando los tiempos establecidos para cada operación (igual que en el caso del lavado). 
+// Después de completar el ciclo debe volver a mostrar el menú principal.
+
+// Importante: en todos los ciclos de espera el programa debe poder detectar la pulsación de la tecla Escape (ESC), cuando esto ocurra el programa debe pasar inmediatamente a la siguiente 
+// etapa del ciclo o finalizarlo si ya se encuentra en la última etapa. Si se trata del ciclo manual los totales informados deben ajustarse a los tiempos reales de cada etapa.
+
 // La opción Salir del Programa finaliza su ejecución.
 
 // Deberá implementar funciones como mínimo para:
@@ -60,15 +64,15 @@
 void ast(int type){
     // asteriscos
     if (type==1){
-        printf("\n||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n");
     }
     // hastag
     if (type==2){
-        printf("\n--------------------------------------------------------------------------------");
+        printf("--------------------------------------------------------------------------------\n");
     // barras
     }
     if (type==3){
-        printf("\n////////////////////////////////////////////////////////////////////////////////");
+        printf("////////////////////////////////////////////////////////////////////////////////\n");
     }
 
 }
@@ -86,92 +90,105 @@ void barraCarga(float t){
 }
 
 void manual(){
-    float tLavado, tSecado, wLavado, wSecado, tPotencia, tecla;
-    int op2;
+    int op4;
+    while(op4 /*y escuchar teclas escape*/){
+        
+        float tLavado, tSecado, wLavado, wSecado, tPotencia, tecla;
+        int op2;
 
-    while(op2){
-        printf("\n> Ingrese el tiempo de lavado (entre 30 y 60 segundos ):\n> ");
-        scanf("%f", &tLavado);
-        printf("\n> Ingrese el tiempo de secado (entre 20 y 90 segundos):\n> ");
-        scanf("%f", &tSecado);
-        if(tLavado >= 30 && tLavado <= 60 && tSecado >= 20 && tSecado <= 90){
-            break;
+        while(op2){
+            printf("\n> Ingrese el tiempo de lavado (entre 30 y 60 segundos ):\n> ");
+            scanf("%f", &tLavado);
+            printf("\n> Ingrese el tiempo de secado (entre 20 y 90 segundos):\n> ");
+            scanf("%f", &tSecado);
+            if(tLavado >= 30 && tLavado <= 60 && tSecado >= 20 && tSecado <= 90){
+                break;
+            }
+            printf("-- valores ingresados incorrectos--\n");       
+        } 
+
+        printf("\n- Presione <Enter> para iniciar el ciclo");
+        scanf("%f", &tecla); 
+
+        wLavado = tLavado * 5;
+        wSecado = tSecado * 12;
+        tPotencia = wLavado + wSecado;
+
+        ast(2);
+        printf("\nProceso de lavado de INICIALIZADO\n");
+        barraCarga(tLavado);
+        printf("\nProceso de lavado de FINALIZADO\n");
+        ast(2);
+        printf("\nProceso de secado de INICIALIZADO\n");
+        barraCarga(tSecado);
+        printf("\nProceso de secado de FINALIZADO\n");
+        ast(2);
+
+        printf("\nCICLO FINALZADO\n");
+        printf("Tiempo de lavado aplicado: %.0f\n", tLavado, " Segundos");
+        printf("Tiempo de secado aplicado: %.0f\n", tSecado, " Segundos");
+        printf("Total de potenca: %.2f\n", tPotencia, " Wats");
+        printf("Potencia de lavado: %.2f\n", wLavado, " Wats");
+        printf("Potencia de Secado: %.2f\n", wSecado, " Wats");
+
+        printf("\n> - Presione <Enter> para reiniciar el ciclo");
+        scanf("%f", &tecla);
+        if(tecla = -1){
+            ast(2);
+            printf("\n\nProceso de lavado manual \n\n");
+            ast(2);
+            continue;
         }
-        printf("-- valores ingresados incorrectos--\n");       
-    } 
-
-    printf("\n- Presione <Enter> para iniciar el ciclo");
-    scanf("%f", &tecla); 
-
-    wLavado = tLavado * 5;
-    wSecado = tSecado * 12;
-    tPotencia = wLavado + wSecado;
-
-    ast(2);
-    printf("\nProceso de lavado de INICIALIZADO\n");
-    barraCarga(tLavado);
-    printf("\nProceso de lavado de FINALIZADO\n");
-    ast(2);
-    printf("\nProceso de secado de INICIALIZADO\n");
-    barraCarga(tSecado);
-    printf("\nProceso de secado de FINALIZADO\n");
-    ast(2);
-
-    printf("\nCICLO FINALZADO\n");
-    printf("Tiempo de lavado aplicado: %.0f\n", tLavado, " Segundos");
-    printf("Tiempo de secado aplicado: %.0f\n", tSecado, " Segundos");
-    printf("Total de potenca: %.2f\n", tPotencia, " Wats");
-    printf("Potencia de lavado: %.2f\n", wLavado, " Wats");
-    printf("Potencia de Secado: %.2f\n", wSecado, " Wats");
-    printf("\n> - Presione <Enter> para iniciar el ciclo");
-    scanf("%f", &tecla);
+    }
 }
 
 void automatico(){
-    
-    float tecla;
-    int op3;
-    while(op3){
-        printf("\n");
-        printf("\n - Baño decapante de la pieza, tiempo: 20 segundos");
-        printf("\n - Lavado desengrasante, tiempo: 35 segundos");
-        printf("\n - Secado en horno, tiempo 20 segundos");
-        printf("\n - Aplicar pintura base, tiempo 15 segundos");
-        printf("\n> Ingrese <Enter> para iniciar o <Esc> para salir\n >");
-        scanf("%f", &tecla);
+    int op5;
+    while(op5){
+        float tecla;
+        int op3;
+        while(op3){
+            // 164 = ñ
+            printf("\n");
+            printf("\n - Ba%co decapante de la pieza, tiempo: 20 segundos", 164);
+            printf("\n - Lavado desengrasante, tiempo: 35 segundos");
+            printf("\n - Secado en horno, tiempo 20 segundos");
+            printf("\n - Aplicar pintura base, tiempo 15 segundos");
+            printf("\n> Ingrese <Enter> para iniciar o <Esc> para salir\n >");
+            scanf("%f", &tecla);
 
-        ast(2);
-        printf("\n Baño decapante de la pieza INCIALIZADO\n");
-        barraCarga(20);
-        printf("\n Baño decapante de la pieza FINALIZADO\n");
-        ast(2);
-        printf("\n Lavado desengrasante INCIALIZADO\n");
-        barraCarga(35);
-        printf("\n Lavado desengrasante FINALIZADO\n");
-        ast(2);
-        printf("\n Secado en horno INCIALIZADO\n");
-        barraCarga(20);
-        printf("\n Secado en horno FINALIZADO\n");
-        ast(2);
-        printf("\n Aplicado de pintura base, INCIALIZADO\n");
-        barraCarga(15);
-        printf("\n Aplicado de pintura base, FINALIZADO\n");
-        ast(2);
+            ast(2);
+            printf("\n Baño decapante de la pieza INCIALIZADO\n");
+            barraCarga(20);
+            printf("\n Baño decapante de la pieza FINALIZADO\n");
+            ast(2);
+            printf("\n Lavado desengrasante INCIALIZADO\n");
+            barraCarga(35);
+            printf("\n Lavado desengrasante FINALIZADO\n");
+            ast(2);
+            printf("\n Secado en horno INCIALIZADO\n");
+            barraCarga(20);
+            printf("\n Secado en horno FINALIZADO\n");
+            ast(2);
+            printf("\n Aplicado de pintura base, INCIALIZADO\n");
+            barraCarga(15);
+            printf("\n Aplicado de pintura base, FINALIZADO\n");
+            ast(2);
 
-        printf("\n\n Desea repetir esta accion? \n <Enter> para si || <Esc> para salir\n> ");
-        scanf("%f", tecla);
-        if(tecla == 1/*esc*/){
-            break;
+            printf("\n\n Desea repetir esta accion? \n <Enter> para si || <Esc> para salir\n> ");
+            scanf("%f", tecla);
+            if(tecla == 1/*esc*/){
+                break;
+            }
         }
     }
     
-
 }
 
 void main(){
     int op;
-
-    printf("Programa de Auto Plus ejecutandose");
+    ast(1);
+    printf("\n\n\t\t\tPrograma de Auto Plus ejecutandose\n\n\n");
     ast(1);
     while (op){
         // menu principal
@@ -185,14 +202,14 @@ void main(){
 
         if(op == 1){
             ast(2);
-            printf("\nLavado Manual");
+            printf("\nLavado Manual\n");
             ast(2);
             manual();
             
         }
         else if(op == 2){
             ast(2);
-            printf("\nLavado Automatico");
+            printf("\nLavado Automatico\n");
             ast(2);
             automatico();
         }
@@ -208,5 +225,4 @@ void main(){
             ast(1);
         }
     }
-
 }

@@ -81,22 +81,27 @@
 void barraCarga(float t){
 
     // █ = ALT + 219
-    const char LOAD [11]= "██████████";
-    int j = 1;
+    // ▓ = ALT + 178
+    const int LOAD = 178;
+    char space = "-";
+    //char* LOAD[] = {"t", "e", "s", "t"};
+
     float porcentaje = 100 / t;
     float cont = 0;
-    int cantBarra = 0;
-    int bef = 0;
-    int esp = 0;
     
     for(float i = 0; i <= t; i++){
-        printf("\r En proceso %3.2f%%  |%c", cont,LOAD[j]); 
-        if(cont <= 10 * j){
-            j++;
+        
+        printf("\r En proceso %3.2f%%", cont);
+        for(int k = 1; k <= 3; k++){
+            printf("%c", space);
+        }
+        for(int j = 0; j <= 19; j++){
+            printf("%c", LOAD);
         }
         sleep(1);
         cont += porcentaje;
     }
+    return 0;
 }
 
 // void barraCarga(float t){
@@ -111,17 +116,54 @@ void barraCarga(float t){
 //     }
 // }
 
+// opcion 1 alertEsc();
 
+// int alertEsc(){
+//     while(1){
+        // 27 = escape
+        // if(GetAsyncKeyState(0x27)){
+        //     printf("\nVolvendo al menu principal");
+        //     sleep(100);
+        // }
+        // 13 = enter+
+
+
+
+//     }
+// }
+
+void buscadorSignos(){
+    // Caracteres ASCII extendidos
+
+    int a = 128;
+    int b = 255;
+
+    for(int i = a; i <= b; i++){
+        printf("%c - %i\n", i, i);
+    }
+}
 
 void main(){
     
     // carga de datos
     int a;
 
+
     printf("TEST\n");
     printf("- Ingreese la cantidad de tiempo(s) que se usar:\n> ");
-    scanf("%i", &a);
+    scanf("%i", &a); 
     barraCarga(a);
+    //buscadorSignos();
 
-    // barraCarga();
+    
+
 }
+
+// webs:
+
+/*
+
+    https://cherrytree.at/misc/vk.htm
+
+
+*/
