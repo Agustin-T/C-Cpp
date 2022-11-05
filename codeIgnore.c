@@ -110,9 +110,10 @@ void barraCarga(float t){
         if(cont == 100){
             relacionSPACE = 1;
         }
-        // white(porcentajeLOAD <= cont){
-        //     relacionLOAD += 1;
-        // }
+        while(porcentajeLOAD >= cont){
+            relacionLOAD += 1;
+        }
+        printf("\t\t\t\tTest %i", relacionLOAD);
     }
 }
 
