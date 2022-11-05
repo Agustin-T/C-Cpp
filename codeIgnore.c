@@ -81,27 +81,39 @@
 void barraCarga(float t){
 
     // █ = ALT + 219
-    // ▓ = ALT + 178
-    const int LOAD = 178;
-    char space = "-";
-    //char* LOAD[] = {"t", "e", "s", "t"};
+    const int LOAD = 219;
+    // espacio =  ALT + 32
+    const int SPACE = 32;
 
     float porcentaje = 100 / t;
     float cont = 0;
+    float porcentajeLOAD = t / 20;
+    float relacionLOAD = 0;
+    float relacionSPACE = 3;
     
     for(float i = 0; i <= t; i++){
         
-        printf("\r En proceso %3.2f%%", cont);
-        for(int k = 1; k <= 3; k++){
-            printf("%c", space);
+        printf("\r En proceso %.2f%%", cont);
+        for(int k = 1; k <= relacionSPACE; k++){
+            printf("%c", SPACE);
         }
-        for(int j = 0; j <= 19; j++){
+        printf("|");
+        for(int j = 1; j <= 20; j++){
             printf("%c", LOAD);
         }
+        printf("|");
+
         sleep(1);
         cont += porcentaje;
+
+        relacionSPACE = 2;
+        if(cont == 100){
+            relacionSPACE = 1;
+        }
+        // white(porcentajeLOAD <= cont){
+        //     relacionLOAD += 1;
+        // }
     }
-    return 0;
 }
 
 // void barraCarga(float t){
