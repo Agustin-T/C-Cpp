@@ -27,3 +27,99 @@ La función main() mostrará un menú de opciones:
 Si el usuario ingresa la opción 1 o 2 el programa ejecutará la función correspondiente y luego volverá mostrar el menú. El programa finaliza solamente cuando 
 el usuario ingrese la opción 3.
 */
+
+#include <stdio.h>
+#include <math.h>
+
+// #define PI 3,141592
+
+int tMecanizado(){
+    int esp, vel, tiempo;
+    while(1){
+        printf("\n Ingrese el espesor de la pieza(entre 1mm y 10mm): \n > ");
+        scanf("%i", esp);
+        printf("\n Ingrese la velocidad del mecanizado:\n > 1 - lento\n > 2 - rapido\n > ");
+        scanf("%i", vel);
+
+        if((esp <= 1 & esp >= 10) & (vel == 1 || vel == 2)){
+            printf("\nValores ingresados correctamente\n");
+            break;
+        }
+
+        printf("\nValores ingresados incorrectos, intente nuenvamente\n");
+            
+    }
+
+    // mayorres o iguales a 5
+    if(esp <= 5){
+        if(vel == 1){
+            tiempo = 25;
+        }else{
+            tiempo = 20;
+        }
+    // menores de 5
+    }else{
+        if(vel == 1){
+            tiempo = 18;
+        }else{
+            tiempo = 12;
+        }
+    }
+    return tiempo;
+}
+
+int calc_prof(){
+    const  double PI = 3.141592;
+    int profundidad;
+    int vel_rot;
+    while(1){
+
+        // velocidad de rotacion
+        int vel_rot = 0;
+
+        printf("\nIngrese la veloridad (rpm) - [entre 1000 y 10000]\n> ");
+        scanf("%i", &vel_rot);
+
+        if(vel_rot >= 1000 & vel_rot <= 10000){
+            break;
+        }
+        printf("\n El valor ingresado es incorrecto");
+    }
+
+    // profundidad = ( √(PI * rpm) ) / 60, 
+    // usar funcion sqrt()
+    profundidad = ((0.5 * (PI * vel_rot)) / 60);
+}
+
+void main(){
+    printf("Inicio del programa: \n");
+    while(1){
+        int op = 0; 
+        printf("----------------------------------------------------------------");
+        printf("\n> Menu de Opciones");
+        printf("\n> Calcular profundidad de corte de la herramienta:");
+        printf("\n> Tiempo de mecanizado para la fabricacion de una herramienta");
+        printf("\n> Salir del programa\n> ");
+        scanf("%i", &op);
+        printf("----------------------------------------------------------------\n");
+
+        
+        if(op == 1){
+            int profundidad;
+            profundidad = calc_prof();
+            printf("\nProfundida de corte de la herramienta es: %i\n", profundidad);
+        }
+        else if(op == 2){
+            int tiempo;
+            tiempo = tMecanizado();
+            printf("\nEl tiempo de mecanizado de las piezas es : %i\n", tiempo);
+        }
+        else if(op == 3){
+            printf("\n Finalizando programa... \n");
+            break;
+        }else{
+            printf("\n Valores ingresaros incorrectos, intente nuevamente\n");
+        }
+
+    }
+}
