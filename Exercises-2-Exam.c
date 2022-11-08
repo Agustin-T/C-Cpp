@@ -31,17 +31,15 @@ el usuario ingrese la opción 3.
 #include <stdio.h>
 #include <math.h>
 
-// #define PI 3,141592
-
 int tMecanizado(){
     int esp, vel, tiempo;
     while(1){
         printf("\n Ingrese el espesor de la pieza(entre 1mm y 10mm): \n > ");
-        scanf("%i", esp);
+        scanf("%i", &esp);
         printf("\n Ingrese la velocidad del mecanizado:\n > 1 - lento\n > 2 - rapido\n > ");
-        scanf("%i", vel);
+        scanf("%i", &vel);
 
-        if((esp <= 1 & esp >= 10) & (vel == 1 || vel == 2)){
+        if((esp >= 1 & esp <= 10) & (vel == 1 | vel == 2)){
             printf("\nValores ingresados correctamente\n");
             break;
         }
@@ -68,17 +66,14 @@ int tMecanizado(){
     return tiempo;
 }
 
-int calc_prof(){
-    const  double PI = 3.141592;
-    int profundidad;
-    int vel_rot;
+float calc_prof(){
+    const double PI = 3.141592;
+    double profundidad;
+     // velocidad de rotacion
+    float vel_rot;
     while(1){
-
-        // velocidad de rotacion
-        int vel_rot = 0;
-
         printf("\nIngrese la veloridad (rpm) - [entre 1000 y 10000]\n> ");
-        scanf("%i", &vel_rot);
+        scanf("%f", &vel_rot);
 
         if(vel_rot >= 1000 & vel_rot <= 10000){
             break;
@@ -88,7 +83,7 @@ int calc_prof(){
 
     // profundidad = ( √(PI * rpm) ) / 60, 
     // usar funcion sqrt()
-    profundidad = ((0.5 * (PI * vel_rot)) / 60);
+    profundidad = ((sqrt(PI * vel_rot)) / 60);
 }
 
 void main(){
@@ -105,14 +100,14 @@ void main(){
 
         
         if(op == 1){
-            int profundidad;
+            float profundidad;
             profundidad = calc_prof();
-            printf("\nProfundida de corte de la herramienta es: %i\n", profundidad);
+            printf("\n Profundidad de corte de la herramienta es: %.2f\n", profundidad);
         }
         else if(op == 2){
             int tiempo;
             tiempo = tMecanizado();
-            printf("\nEl tiempo de mecanizado de las piezas es : %i\n", tiempo);
+            printf("\n El tiempo de mecanizado de las piezas es : %i\n", tiempo);
         }
         else if(op == 3){
             printf("\n Finalizando programa... \n");
