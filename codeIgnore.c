@@ -78,7 +78,7 @@
 
 //Option temporal con "windwos"
 
-void barraCarga(float t){
+void barraCarga(int t){
 
     // █ = ALT + 219
     const int LOAD = 219;
@@ -86,34 +86,52 @@ void barraCarga(float t){
     const int SPACE = 32;
 
     float porcentaje = 100 / t;
+    float porcentajeLOAD = 0;
+    int cantLOAD = 20;
     float cont = 0;
-    float porcentajeLOAD = t / 20;
-    float relacionLOAD = 0;
-    float relacionSPACE = 3;
+
     
-    for(float i = 0; i <= t; i++){
-        
+    int relacionSPACE = 3;
+    int relacionLOAD = 0;
+    int relacionSPACELOAD = 20;
+    
+    for(int i = 0; i <= t; i++){
+        if(cont == 100){
+            relacionSPACE = 1;
+        }
         printf("\r En proceso %.2f%%", cont);
         for(int k = 1; k <= relacionSPACE; k++){
             printf("%c", SPACE);
         }
         printf("|");
-        for(int j = 1; j <= 20; j++){
-            printf("%c", LOAD);
+        for(int j = 0; j <= relacionLOAD; j++){
+            printf("%c", LOAD);      
         }
-        printf("|");
-
+        for(int q = 0; q <= (relacionSPACELOAD -1); q++){
+            printf("%c", SPACE);
+        }
+        printf("| ");
+        printf("%i", i);
+        //identacion para 3 digitos
+        if(i >= 100){
+            printf(" ");
+        }else if(i >=10){
+            printf("  ");
+        }else{
+            printf("   ");
+        }
+        printf("seg");
+        
         sleep(1);
         cont += porcentaje;
 
-        relacionSPACE = 2;
-        if(cont == 100){
-            relacionSPACE = 1;
+        if(cont >= 10){
+            relacionSPACE = 2;
         }
-        while(porcentajeLOAD >= cont){
-            relacionLOAD += 1;
-        }
-        printf("\t\t\t\tTest %i", relacionLOAD);
+        //cantidad de barras a mostrar
+        porcentajeLOAD= ((cont * cantLOAD) / 100);
+        relacionLOAD = (int)porcentajeLOAD;
+        relacionSPACELOAD = 20 - relacionLOAD;
     }
 }
 
@@ -157,16 +175,20 @@ void buscadorSignos(){
 }
 
 void main(){
-    
-    // carga de datos
-    int a;
+    printf("\n\t\t\tTEST");
+    while(1){
+        // carga de datos
+        int a;
 
-
-    printf("TEST\n");
-    printf("- Ingreese la cantidad de tiempo(s) que se usar:\n> ");
-    scanf("%i", &a); 
-    barraCarga(a);
-    //buscadorSignos();
+        printf("\n\n-----------------------------------------------------");
+        printf("\n- Ingreese la cantidad de tiempo(s) que se usar:\n> ");
+        scanf("%i", &a); 
+        barraCarga(a);
+        //buscadorSignos();
+        if(a == -1){
+            break;
+        }
+    }
 
     
 
