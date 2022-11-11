@@ -93,10 +93,13 @@ void manual(){
     int op4;
     while(op4 /*y escuchar teclas escape*/){
         
-        float tLavado, tSecado, wLavado, wSecado, tPotencia, tecla;
-        int op2;
+        float tLavado, tSecado, wLavado, wSecado, tPotencia;
+        int op2, tecla1;
 
         while(op2){
+            ast(2);
+            printf("\n\t\t\tLavado Manual\n\n");
+            ast(2);
             printf("\n> Ingrese el tiempo de lavado (entre 30 y 60 segundos ):\n> ");
             scanf("%f", &tLavado);
             printf("\n> Ingrese el tiempo de secado (entre 20 y 90 segundos):\n> ");
@@ -107,36 +110,41 @@ void manual(){
             printf("-- valores ingresados incorrectos--\n");       
         } 
 
-        printf("\n- Presione <Enter> para iniciar el ciclo");
-        scanf("%f", &tecla); 
+        printf("\n- Presione <Enter> = Iniciar el Lavado\n"
+                "\t   <Esc>   = Salir\n> ");
+        scanf("%i", &tecla1); 
 
         wLavado = tLavado * 5;
         wSecado = tSecado * 12;
         tPotencia = wLavado + wSecado;
 
         ast(2);
-        printf("\nProceso de lavado de INICIALIZADO\n");
+        printf("\n Proceso de lavado de INICIALIZADO\n");
         barraCarga(tLavado);
-        printf("\nProceso de lavado de FINALIZADO\n");
+        printf("\n Proceso de lavado de FINALIZADO\n");
         ast(2);
-        printf("\nProceso de secado de INICIALIZADO\n");
+        printf("\n Proceso de secado de INICIALIZADO\n");
         barraCarga(tSecado);
-        printf("\nProceso de secado de FINALIZADO\n");
+        printf("\n Proceso de secado de FINALIZADO\n");
         ast(2);
 
-        printf("\nCICLO FINALZADO\n");
-        printf("Tiempo de lavado aplicado: %.0f\n", tLavado, " Segundos");
-        printf("Tiempo de secado aplicado: %.0f\n", tSecado, " Segundos");
-        printf("Total de potenca: %.2f\n", tPotencia, " Wats");
-        printf("Potencia de lavado: %.2f\n", wLavado, " Wats");
-        printf("Potencia de Secado: %.2f\n", wSecado, " Wats");
+        printf("\n CICLO FINALZADO\n\n");
+        printf(" Tiempo de lavado aplicado(seg): %.0f\n", tLavado);
+        printf(" Tiempo de secado aplicado(seg): %.0f\n", tSecado);
+        printf(" Total de potenca(W):            %.2f\n", tPotencia);
+        printf(" Potencia de lavado(W):          %.2f\n", wLavado);
+        printf(" Potencia de Secado(W):          %.2f\n", wSecado);
 
-        printf("\n> - Presione <Enter> para reiniciar el ciclo");
-        scanf("%f", &tecla);
-        if(tecla = -1){
+        printf("\n- Presione <Enter> = Reiniciar el lavado\n"
+                "\t   <Esc>   = Salir\n> ");
+        scanf("%i", &tecla1);
+
+        if(tecla2 = -1){
             ast(2);
-            printf("\n\nProceso de lavado manual \n\n");
+            printf("\n\n\t\t\tMenu principal\n\n");
             ast(2);
+            break;
+        }else{
             continue;
         }
     }
@@ -145,20 +153,33 @@ void manual(){
 void automatico(){
     int op5;
     while(op5){
-        float tecla;
+        float tecla2;
         int op3;
         while(op3){
+            ast(2);
+            printf("\n\t\t\tLavado Automatico\n\n");
+            ast(2);
             // 164 = ñ
             printf("\n");
-            printf("\n - Ba%co decapante de la pieza, tiempo: 20 segundos", 164);
-            printf("\n - Lavado desengrasante, tiempo: 35 segundos");
-            printf("\n - Secado en horno, tiempo 20 segundos");
-            printf("\n - Aplicar pintura base, tiempo 15 segundos");
-            printf("\n> Ingrese <Enter> para iniciar o <Esc> para salir\n >");
+            printf("\n Ba%co decapante de la pieza:        Tiempo: 20 seg", 164);
+            printf("\n Lavado desengrasante:              Tiempo: 35 seg");
+            printf("\n Secado en horno:                   Tiempo: 20 seg");
+            printf("\n Aplicar pintura base:              Tiempo: 15 seg");
+            printf("\n\n - Presione <Enter> = Iniciar el Lavado\n"
+                "\t    <Esc>   = Salir\n> ");
             scanf("%f", &tecla);
+            if(tecla == -1/*esc*/){
+                ast(2);
+                printf("\n\n\t\t\tMenu principal\n\n");
+                ast(2);
+                break;
+            }else{
+                continue;
+            }
+
 
             ast(2);
-            printf("\n Baño decapante de la pieza INCIALIZADO\n");
+            printf("\n Ba%co decapante de la pieza INCIALIZADO\n", 164);
             barraCarga(20);
             printf("\n Baño decapante de la pieza FINALIZADO\n");
             ast(2);
@@ -175,10 +196,22 @@ void automatico(){
             printf("\n Aplicado de pintura base, FINALIZADO\n");
             ast(2);
 
-            printf("\n\n Desea repetir esta accion? \n <Enter> para si || <Esc> para salir\n> ");
-            scanf("%f", tecla);
-            if(tecla == 1/*esc*/){
+            ast(2);
+            printf("\n\t\t\tProceso completado");
+            ast(2);
+        
+
+            printf("\n\n- Presione <Enter> = Reiniciar el ciclo\n"
+                "\t   <Esc>   = Salir\n> ");
+            scanf("%f", &tecla2);
+
+            if(tecla == -1/*esc*/){
+                ast(2);
+                printf("\n\n\t\t\tMenu principal\n\n");
+                ast(2);
                 break;
+            }else{
+                continue;
             }
         }
     }
@@ -193,35 +226,28 @@ void main(){
     while (op){
         // menu principal
         ast(3);
-        printf("\n> 1-Ciclo de lavado manual");
-        printf("\n> 2-Ciclo automatizado de pintura base");
-        printf("\n> 3-Salir del promgrama");
-        printf("\n> Ingrese una opcion (1, 2 o 3):\n> ");
+        printf("\n> 1 - Ciclo de lavado manual");
+        printf("\n> 2 - Ciclo automatizado de pintura base");
+        printf("\n> 3 - Salir del promgrama");
+        printf("\n> ");
         scanf("%i", &op);
         ast(3);
 
         if(op == 1){
-            ast(2);
-            printf("\nLavado Manual\n");
-            ast(2);
             manual();
-            
         }
-        else if(op == 2){
-            ast(2);
-            printf("\nLavado Automatico\n");
-            ast(2);
+        else if(op == 2){   
             automatico();
         }
         else if(op == 3){
             ast(1);
-            printf("\n\nSaliendo del programa...\n");
+            printf("\n\t\t\tSaliendo del programa...\n\n");
             ast(1);
             break;
         }
         else{
             ast(1);
-            printf("\nValor Incorrecto, intente de nuevo\n");
+            printf("\n\t\t\tValor Incorrecto, intente de nuevo\n");
             ast(1);
         }
     }
