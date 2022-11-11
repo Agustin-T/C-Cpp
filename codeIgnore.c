@@ -105,9 +105,6 @@ void barraCarga(float t){
             relacionLOAD = cantLOAD;
         }
         // remainder retorna % en float
-        if(remainder(cont, porcentaje) != 0){
-            test += remainder(cont, porcentaje); 
-        }
         if(cont >= 10){
             relacionSPACE = 2;
         }
@@ -143,7 +140,6 @@ void barraCarga(float t){
         }
         printf("%i", i);
         printf(" seg");
-        printf("% f", test);
         
         cont += porcentaje;
         sleep(1);
