@@ -79,13 +79,68 @@ void ast(int type){
 
 void barraCarga(float t){
 
-    float porcentaje = 100 / t;
-    float cont = 0;
+    // █ = ALT + 219
+    const int LOAD = 219;
+    // espacio =  ALT + 32
+    const int SPACE = 32;
 
-    for(float i = 0; i <= t; i++){
+    float tiempo = 0;   
+    float porcentaje = 100 / t;
+    float porcentajeLOAD = 0;
+    int cantLOAD = 20;
+    float cont = 0;
+    float test = 0;
+
+    
+    int relacionSPACE = 3;
+    int relacionLOAD = 0;
+    int relacionSPACELOAD = 20;
+    
+    for(int i = 0; i <= t; i++){
+        // Correccion de calculo por falta de suma de milessimas
+        if(i == t){
+            cont = 100;
+            relacionLOAD = cantLOAD;
+        }
+        // remainder retorna % en float
+        if(cont >= 10){
+            relacionSPACE = 2;
+        }
+        
+        if(cont == 100){
+            relacionSPACE = 1;
+        }
+        //cantidad de barras a mostrar
+        porcentajeLOAD = ((cont * cantLOAD) / 100);
+        relacionLOAD = porcentajeLOAD;
+        relacionSPACELOAD = 20 - relacionLOAD;
+
+        // impresion
         printf("\r En proceso %.2f%%", cont);
-        sleep(1);
+        for(int k = 1; k <= relacionSPACE; k++){
+            printf("%c", SPACE);
+        }
+        printf("|");
+        for(int j = 0; j <= relacionLOAD; j++){
+            printf("%c", LOAD);      
+        }
+        for(int q = 0; q <= (relacionSPACELOAD -1); q++){
+            printf("%c", SPACE);
+        }
+        printf("|");
+        //identacion para 3 digitos
+        if(i >= 100){
+            printf(" ");
+        }else if(i >= 10){
+            printf("  ");
+        }else{
+            printf("   ");
+        }
+        printf("%i", i);
+        printf(" seg");
+        
         cont += porcentaje;
+        sleep(1);
     }
 }
 
@@ -96,10 +151,10 @@ void manual(){
         float tLavado, tSecado, wLavado, wSecado, tPotencia;
         int op2, tecla1;
 
+        ast(2);
+        printf("\n\t\t\tLavado Manual\n\n");
+        ast(2);
         while(op2){
-            ast(2);
-            printf("\n\t\t\tLavado Manual\n\n");
-            ast(2);
             printf("\n> Ingrese el tiempo de lavado (entre 30 y 60 segundos ):\n> ");
             scanf("%f", &tLavado);
             printf("\n> Ingrese el tiempo de secado (entre 20 y 90 segundos):\n> ");
@@ -139,7 +194,7 @@ void manual(){
                 "\t   <Esc>   = Salir\n> ");
         scanf("%i", &tecla1);
 
-        if(tecla2 = -1){
+        if(tecla1 = -1){
             ast(2);
             printf("\n\n\t\t\tMenu principal\n\n");
             ast(2);
@@ -151,70 +206,64 @@ void manual(){
 }
 
 void automatico(){
-    int op5;
-    while(op5){
-        float tecla2;
-        int op3;
-        while(op3){
+    
+    float tecla2;
+    int op3;
+    while(op3){
+        ast(2);
+        printf("\n\t\t\tLavado Automatico\n\n");
+        ast(2);
+        // 164 = ñ
+        printf("\n");
+        printf("\n Ba%co decapante de la pieza:        Tiempo: 20 seg", 164);
+        printf("\n Lavado desengrasante:              Tiempo: 35 seg");
+        printf("\n Secado en horno:                   Tiempo: 20 seg");
+        printf("\n Aplicar pintura base:              Tiempo: 15 seg");
+        printf("\n\n - Presione <Enter> = Iniciar el Lavado\n"
+            "\t    <Esc>   = Salir\n> ");
+        scanf("%f", &tecla2);
+        if(tecla2 == -1/*esc*/){
             ast(2);
-            printf("\n\t\t\tLavado Automatico\n\n");
+            printf("\n\n\t\t\tMenu principal\n\n");
             ast(2);
-            // 164 = ñ
-            printf("\n");
-            printf("\n Ba%co decapante de la pieza:        Tiempo: 20 seg", 164);
-            printf("\n Lavado desengrasante:              Tiempo: 35 seg");
-            printf("\n Secado en horno:                   Tiempo: 20 seg");
-            printf("\n Aplicar pintura base:              Tiempo: 15 seg");
-            printf("\n\n - Presione <Enter> = Iniciar el Lavado\n"
-                "\t    <Esc>   = Salir\n> ");
-            scanf("%f", &tecla);
-            if(tecla == -1/*esc*/){
-                ast(2);
-                printf("\n\n\t\t\tMenu principal\n\n");
-                ast(2);
-                break;
-            }else{
-                continue;
-            }
+            break;
+        }
 
+        ast(2);
+        printf("\n Ba%co decapante de la pieza INCIALIZADO\n", 164);
+        barraCarga(20);
+        printf("\n Ba%o decapante de la pieza FINALIZADO\n", 164);
+        ast(2);
+        printf("\n Lavado desengrasante INCIALIZADO\n");
+        barraCarga(35);
+        printf("\n Lavado desengrasante FINALIZADO\n");
+        ast(2);
+        printf("\n Secado en horno INCIALIZADO\n");
+        barraCarga(20);
+        printf("\n Secado en horno FINALIZADO\n");
+        ast(2);
+        printf("\n Aplicado de pintura base, INCIALIZADO\n");
+        barraCarga(15);
+        printf("\n Aplicado de pintura base, FINALIZADO\n");
+        ast(2);
+        printf("\n Proceso completado\n");
+        ast(2);
+    
 
-            ast(2);
-            printf("\n Ba%co decapante de la pieza INCIALIZADO\n", 164);
-            barraCarga(20);
-            printf("\n Baño decapante de la pieza FINALIZADO\n");
-            ast(2);
-            printf("\n Lavado desengrasante INCIALIZADO\n");
-            barraCarga(35);
-            printf("\n Lavado desengrasante FINALIZADO\n");
-            ast(2);
-            printf("\n Secado en horno INCIALIZADO\n");
-            barraCarga(20);
-            printf("\n Secado en horno FINALIZADO\n");
-            ast(2);
-            printf("\n Aplicado de pintura base, INCIALIZADO\n");
-            barraCarga(15);
-            printf("\n Aplicado de pintura base, FINALIZADO\n");
-            ast(2);
+        printf("\n\n- Presione <Enter> = Reiniciar el ciclo\n"
+            "\t   <Esc>   = Salir\n> ");
+        scanf("%f", &tecla2);
 
+        if(tecla2 == -1/*esc*/){
             ast(2);
-            printf("\n\t\t\tProceso completado");
+            printf("\n\n\t\t\tMenu principal\n\n");
             ast(2);
-        
-
-            printf("\n\n- Presione <Enter> = Reiniciar el ciclo\n"
-                "\t   <Esc>   = Salir\n> ");
-            scanf("%f", &tecla2);
-
-            if(tecla == -1/*esc*/){
-                ast(2);
-                printf("\n\n\t\t\tMenu principal\n\n");
-                ast(2);
-                break;
-            }else{
-                continue;
-            }
+            break;
+        }else{
+            continue;
         }
     }
+    
     
 }
 
