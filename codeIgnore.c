@@ -3,6 +3,7 @@
 #include <time.h> // clock()
 #include <stdlib.h> // Sleep();
 #include <conio.h> // strings
+#include <math.h> // remainder()
 
 // Opcion 1
 
@@ -78,7 +79,7 @@
 
 //Option temporal con "windwos"
 
-void barraCarga(int t){
+void barraCarga(float t){
 
     // █ = ALT + 219
     const int LOAD = 219;
@@ -90,6 +91,7 @@ void barraCarga(int t){
     float porcentajeLOAD = 0;
     int cantLOAD = 20;
     float cont = 0;
+    float test = 0;
 
     
     int relacionSPACE = 3;
@@ -102,6 +104,10 @@ void barraCarga(int t){
             cont = 100;
             relacionLOAD = cantLOAD;
         }
+        // remainder retorna % en float
+        if(remainder(cont, porcentaje) != 0){
+            test += remainder(cont, porcentaje); 
+        }
         if(cont >= 10){
             relacionSPACE = 2;
         }
@@ -110,12 +116,12 @@ void barraCarga(int t){
             relacionSPACE = 1;
         }
         //cantidad de barras a mostrar
-        porcentajeLOAD= ((cont * cantLOAD) / 100);
+        porcentajeLOAD = ((cont * cantLOAD) / 100);
         relacionLOAD = porcentajeLOAD;
         relacionSPACELOAD = 20 - relacionLOAD;
 
         // impresion
-        printf("\r En proceso %.0f%%", cont);
+        printf("\r En proceso %.2f%%", cont);
         for(int k = 1; k <= relacionSPACE; k++){
             printf("%c", SPACE);
         }
@@ -126,7 +132,7 @@ void barraCarga(int t){
         for(int q = 0; q <= (relacionSPACELOAD -1); q++){
             printf("%c", SPACE);
         }
-        printf("| ");
+        printf("|");
         //identacion para 3 digitos
         if(i >= 100){
             printf(" ");
@@ -136,7 +142,8 @@ void barraCarga(int t){
             printf("   ");
         }
         printf("%i", i);
-        printf("seg");
+        printf(" seg");
+        printf("% f", test);
         
         cont += porcentaje;
         sleep(1);
