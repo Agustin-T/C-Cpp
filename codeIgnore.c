@@ -85,6 +85,7 @@ void barraCarga(int t){
     // espacio =  ALT + 32
     const int SPACE = 32;
 
+    float tiempo = 0;   
     float porcentaje = 100 / t;
     float porcentajeLOAD = 0;
     int cantLOAD = 20;
@@ -96,10 +97,25 @@ void barraCarga(int t){
     int relacionSPACELOAD = 20;
     
     for(int i = 0; i <= t; i++){
+        // Correccion de calculo por falta de suma de milessimas
+        if(i == t){
+            cont = 100;
+            relacionLOAD = cantLOAD;
+        }
+        if(cont >= 10){
+            relacionSPACE = 2;
+        }
+        
         if(cont == 100){
             relacionSPACE = 1;
         }
-        printf("\r En proceso %.2f%%", cont);
+        //cantidad de barras a mostrar
+        porcentajeLOAD= ((cont * cantLOAD) / 100);
+        relacionLOAD = porcentajeLOAD;
+        relacionSPACELOAD = 20 - relacionLOAD;
+
+        // impresion
+        printf("\r En proceso %.0f%%", cont);
         for(int k = 1; k <= relacionSPACE; k++){
             printf("%c", SPACE);
         }
@@ -111,27 +127,19 @@ void barraCarga(int t){
             printf("%c", SPACE);
         }
         printf("| ");
-        printf("%i", i);
         //identacion para 3 digitos
         if(i >= 100){
             printf(" ");
-        }else if(i >=10){
+        }else if(i >= 10){
             printf("  ");
         }else{
             printf("   ");
         }
+        printf("%i", i);
         printf("seg");
         
-        sleep(1);
         cont += porcentaje;
-
-        if(cont >= 10){
-            relacionSPACE = 2;
-        }
-        //cantidad de barras a mostrar
-        porcentajeLOAD= ((cont * cantLOAD) / 100);
-        relacionLOAD = (int)porcentajeLOAD;
-        relacionSPACELOAD = 20 - relacionLOAD;
+        sleep(1);
     }
 }
 
