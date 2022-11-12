@@ -2,8 +2,21 @@
 #include <string.h> // fflush()
 #include <time.h> // clock()
 #include <stdlib.h> // Sleep();
-#include <conio.h> // strings
+#include <conio.h> // strings , kbhit
 #include <math.h> // remainder()
+
+
+// void barraCarga(float t){
+
+//     float porcentaje = 100 / t;
+//     float cont = 0;
+
+//     for(float i = 0; i <= t; i++){
+//         printf("\r En proceso %.2f%%", cont);
+//         sleep(1);
+//         cont += porcentaje;
+//     }
+// }
 
 // Opcion 1
 
@@ -77,7 +90,76 @@
 //     printf("\n");
 // }
 
-//Option temporal con "windwos"
+//Option 4
+
+// void barraCarga(float t){
+
+//     // █ = ALT + 219
+//     const int LOAD = 219;
+//     // espacio =  ALT + 32
+//     const int SPACE = 32;
+
+//     float tiempo = 0;   
+//     float porcentaje = 100 / t;
+//     float porcentajeLOAD = 0;
+//     int cantLOAD = 20;
+//     float cont = 0;
+//     float test = 0;
+
+    
+//     int relacionSPACE = 3;
+//     int relacionLOAD = 0;
+//     int relacionSPACELOAD = 20;
+    
+//     for(int i = 0; i <= t; i++){
+//         // Correccion de calculo por falta de suma de milessimas
+//         if(i == t){
+//             cont = 100;
+//             relacionLOAD = cantLOAD;
+//         }
+//         // remainder retorna % en float
+//         if(cont >= 10){
+//             relacionSPACE = 2;
+//         }
+        
+//         if(cont == 100){
+//             relacionSPACE = 1;
+//         }
+//         //cantidad de barras a mostrar
+//         porcentajeLOAD = ((cont * cantLOAD) / 100);
+//         relacionLOAD = porcentajeLOAD;
+//         relacionSPACELOAD = 20 - relacionLOAD;
+
+//         // impresion
+//         printf("\r En proceso %.2f%%", cont);
+//         for(int k = 1; k <= relacionSPACE; k++){
+//             printf("%c", SPACE);
+//         }
+//         printf("|");
+//         for(int j = 0; j <= relacionLOAD; j++){
+//             printf("%c", LOAD);      
+//         }
+//         for(int q = 0; q <= (relacionSPACELOAD -1); q++){
+//             printf("%c", SPACE);
+//         }
+//         printf("|");
+//         //identacion para 3 digitos
+//         if(i >= 100){
+//             printf(" ");
+//         }else if(i >= 10){
+//             printf("  ");
+//         }else{
+//             printf("   ");
+//         }
+//         printf("%i", i);
+//         printf(" seg");
+        
+//         cont += porcentaje;
+//         sleep(1);
+//     }
+// }
+
+// opcion 5, (funcion abortar agregada)
 
 void barraCarga(float t){
 
@@ -92,11 +174,12 @@ void barraCarga(float t){
     int cantLOAD = 20;
     float cont = 0;
     float test = 0;
-
     
     int relacionSPACE = 3;
     int relacionLOAD = 0;
     int relacionSPACELOAD = 20;
+
+    char tecla;
     
     for(int i = 0; i <= t; i++){
         // Correccion de calculo por falta de suma de milessimas
@@ -143,22 +226,16 @@ void barraCarga(float t){
         
         cont += porcentaje;
         sleep(1);
+
+        if(kbhit()){
+            tecla = getch();
+            if((int)tecla == 27){
+                printf("\n\nPreisono una tecla <ESC>, proceso intervenido\n");
+                break;
+            }
+        }
     }
 }
-
-// void barraCarga(float t){
-
-//     float porcentaje = 100 / t;
-//     float cont = 0;
-
-//     for(float i = 0; i <= t; i++){
-//         printf("\r En proceso %.2f%%", cont);
-//         sleep(1);
-//         cont += porcentaje;
-//     }
-// }
-
-// opcion 1 alertEsc();
 
 // int alertEsc(){
 //     while(1){
@@ -191,6 +268,7 @@ int tecla(){
     }   
 }
 
+// opcion 1 alertEsc();
 // Codigo de escuchar teclas (muestra repetida la tecla)
 // int tecla(){
 
@@ -229,14 +307,14 @@ void main(){
         int a;
 
         printf("\n\n-----------------------------------------------------");
-        // printf("\n- Ingreese la cantidad de tiempo(s) que se usar:\n> ");
-        //scanf("%i", &a); 
-        //barraCarga(a);
-        //buscadorSignos();
+        printf("\n- Ingreese la cantidad de tiempo(s) que se usar:\n> ");
+        scanf("%i", &a); 
+        barraCarga(a);
+        // buscadorSignos();
 
-        printf("\n - Ingrese si quiere repetir");
-        scanf("%i", &a);;
-        tecla();
+        // printf("\n - Ingrese si quiere repetir");
+        // scanf("%i", &a);;
+        // tecla();
 
         if(a == -1){
             break;
