@@ -174,6 +174,43 @@ void barraCarga(float t){
 //     }
 // }
 
+
+int tecla(){
+
+    char ch;
+    printf("Presiona tecla ESC to exit \n");
+    while(1){
+        if(kbhit()){
+            ch = getch();
+            if((int)ch == 27){
+                break;
+            }
+            printf("Preisono una tecla : %c\n", ch);
+        }
+        
+    }   
+}
+
+// Codigo de escuchar teclas (muestra repetida la tecla)
+// int tecla(){
+
+//     char ch;
+//     printf("Presiona tecla ESC to exit \n");
+//     while(1){
+//         if(kbhit()){
+//             ch = getch();
+//             if((int)ch == 27){
+//                 break;
+//             }
+//             printf("%c", getche());
+//         }
+        
+//     }   
+// }
+
+
+
+
 void buscadorSignos(){
     // Caracteres ASCII extendidos
 
@@ -192,10 +229,15 @@ void main(){
         int a;
 
         printf("\n\n-----------------------------------------------------");
-        printf("\n- Ingreese la cantidad de tiempo(s) que se usar:\n> ");
-        scanf("%i", &a); 
-        barraCarga(a);
+        // printf("\n- Ingreese la cantidad de tiempo(s) que se usar:\n> ");
+        //scanf("%i", &a); 
+        //barraCarga(a);
         //buscadorSignos();
+
+        printf("\n - Ingrese si quiere repetir");
+        scanf("%i", &a);;
+        tecla();
+
         if(a == -1){
             break;
         }
