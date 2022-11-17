@@ -48,6 +48,64 @@ Ejercicios de Lenguaje C
 
 #include <stdio.h>
 
+float calcMin(){
+    const int DIAMETRO = 100;
+    const int CAUDAL = 3000; //cm3
+
+    float pi = 3.14159254;
+    float volumen, tiempo; 
+
+    int altura;
+
+    
+    while(1){
+        printf("\n Ingrese la altura del tanque: \n > ");
+        scanf("%i", &altura);
+        if(altura <= 50 && altura >=20){
+            break;
+        }
+        printf("\n Carga de datos incorrectos, intente nuevamente");
+    }
+
+    volumen = pi * DIAMETRO * altura;
+    tiempo = volumen / CAUDAL;
+
+    printf("El tiempo que tarda en cargar %.2f cm3 es %.2f min", volumen, tiempo);
+
+}
+
 void main(){
     
+    int op = 1;
+    printf("\n\t\t\tEjercicios para examen:\n");
+    while(op != 0){
+
+        printf("\n > Ejercicio 1\n");
+        printf(" > Ejercicio 2\n");
+        printf(" > Ejercicio 3\n");
+        printf(" > Ejercicio 4\n > ");
+        scanf("%i", &op);
+
+        switch(op){
+            case 1:
+                printf(" Calculadora de minutos: \n\n");
+                calcMin();
+                break;
+            case 2:
+                printf(" Ejercicio 2\n\n");
+                break;
+            case 3:
+                printf(" Ejercicio 3\n\n");
+                break;
+            case 4:
+                printf(" Ejercicio 5\n\n");
+                break;
+            case 5:
+                printf(" \t\t\tSaliendo...\n\n");
+                op = 0;
+                break;
+            default:
+                printf("Ingreso de valor incorrecto, intente de nuevo\n");
+        }
+    }
 }
