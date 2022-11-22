@@ -47,6 +47,41 @@ Ejercicios de Lenguaje C
 */
 
 #include <stdio.h>
+/**
+2- Calcular la cantidad de kilos de material que mueve en 10 minutos una cinta transportadora cuya velocidad puede 
+   ajustarse entre 0,5 y 2,0 metros por segundo y sabiendo que si la velocidad en menor o igual a 1,5 m/s,
+   se colocan sobre ella 3 kilos de material cada 30 segundos pero si la velocidad es mayor a 1,5 m/s en lugar de colocar 3 kilos
+   se colocan 5 kilos cada 30 segundos.
+   El dato que se ingresa al programa en una variable será la velocidad seleccionada para la cinta transportadora (0,5 a 2,0)
+   El programa calculará el total de kilos transportados en 10 minutos con esa velocidad seleccionada.
+ */
+float calcK(){
+    float kilos, cinta, velocidad;
+    float tiempo = 30;
+    float tiempoTotal = 600; //seg
+
+    while(1){
+        printf("\nIngrese la velocidad de la Cinta transportadora (entre 0.5 y 2): \n");
+        scanf("%f", &velocidad);
+
+        if(velocidad >= 0.5 && velocidad <= 2){
+            break;
+        }
+        printf("\n Valores Incorrectos, ingrese nuevamente");
+    }
+
+    if(velocidad <= 1.5){
+        cinta = 3;
+    }
+    if(velocidad > 1.5){
+        cinta = 5;    
+    }
+
+    kilos = cinta * (tiempoTotal / 30 );
+    
+    printf("\n La cantidad total de kilos en 10 min es %.2f kg \n", kilos);
+
+}
 
 float calcMin(){
     const int DIAMETRO = 100;
@@ -92,7 +127,8 @@ void main(){
                 calcMin();
                 break;
             case 2:
-                printf(" Ejercicio 2\n\n");
+                printf(" Caluladora de kilos\n\n");
+                calcK();
                 break;
             case 3:
                 printf(" Ejercicio 3\n\n");
