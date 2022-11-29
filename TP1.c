@@ -61,7 +61,7 @@ El proyecto llevará el nombre del alumno y deberá entregarse dentro del plazo 
 */
 
 #include <stdio.h>
-#include <stdlib.h>
+// #include <stdlib.h>
 #include <conio.h> // fkbhit()
 
 // estetica al promgrama
@@ -87,7 +87,7 @@ float barraCarga(float t){
     // espacio =  ALT + 32s
     const int SPACE = 32;
 
-    float tiempo = 0;   
+    //float tiempo = 0;   
     float porcentaje = 100 / t;
     float porcentajeLOAD = 0;
     int cantLOAD = 20;
@@ -124,6 +124,7 @@ float barraCarga(float t){
         printf("\r En proceso %.2f%%", cont);
         for(int k = 1; k <= relacionSPACE; k++){
             printf("%c", SPACE);
+            
         }
         printf("|");
         for(int j = 0; j <= relacionLOAD; j++){
