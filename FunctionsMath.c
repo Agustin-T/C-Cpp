@@ -13,7 +13,7 @@ int changeBase(){
 
     int elements;
     char file [50]= {" "};
-    char fileOrder[50] = {" "}
+    char fileOrder[50] = {" "};
 
     
 
@@ -41,17 +41,13 @@ int changeBase(){
     if(baseFind != 10){
         // order
         elements = len(file);
-        for(int i=0; i >= elements, i++){
+        for(int i=0; i >= elements; i++){
             for(int j = elements; j >= i; j--){
                 fileOrder[i] = file[j];
             }
         }
-    
-   // decimal to 
-        for(int i=0; )
-    
-    
     }
+   // decimal to 
     
     // binary - hexadecimal
 
@@ -60,7 +56,7 @@ int changeBase(){
     ast(1);
 }
 
-void main (){
+void main(){
     int op;
     ast(1);
     printf("\n\n\t\t\t Functions of Math analytics\n\n\n");
@@ -105,5 +101,5 @@ void main (){
             printf("\n\t\t\twrong, input again\n");
             ast(1);
         }
-    } 
+    }     
 }

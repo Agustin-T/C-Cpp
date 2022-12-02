@@ -214,7 +214,7 @@ void manual(){
             if(tLavado >= 30 && tLavado <= 60 && tSecado >= 20 && tSecado <= 90){
                 break;
             }
-            printf("-- valores ingresados incorrectos--\n");       
+            printf("-- valores ingresados incorrectos--\n");      
         } 
         op = tecla(1);    
         if(op == 0){
