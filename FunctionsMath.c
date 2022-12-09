@@ -1,59 +1,82 @@
 #include <stdio.h>
 #include <String.h>
 
+#include "systemsFunctions.c"
 #include "StyleCMD.c"
 
 // 2.0 calcular numeros punto flotante
 
+float inputEcuations(){
+
+    char polynomis [100][100] = {};
+    int cont = 1;
+    int colum = 0;
+
+    while(1){
+        printf("Input your polinomy nunber %i", cont);
+        scanf("%S", &polynomis[colum][0]);
+
+        printf("You want added any more");
+
+        if(lisenKeyboard() != 1){
+            // mostrar polinomios ingresados
+            break;
+        }
+        colum ++;
+        cont +=1;
+    }
+}
 
 
 int changeBase(){
 
-    int number, base, baseFind, numberFind, rest;
+    // int number, base, baseFind, numberFind, rest;
 
-    int elements;
-    char file [50]= {" "};
-    char fileOrder[50] = {" "};
+    // int elements;
+    // char file [50]= {" "};
+    // char fileOrder[50] = {" "};
 
     
 
-    ast(3);
-    printf("\n- Input the current number\n > ");
-    scanf("%i", &number);
-    printf("\n- Input the current base\n > ");
-    scanf("%i", &base);
-    printf("\n- Input the base number that you want to change\n > ");
-    scanf("%i", &baseFind);
-    ast(3);
+    // ast(3);
+    // printf("\n- Input the current number\n > ");
+    // scanf("%i", &number);
+    // printf("\n- Input the current base\n > ");
+    // scanf("%i", &base);
+    // printf("\n- Input the base number that you want to change\n > ");
+    // scanf("%i", &baseFind);
+    // ast(3);
 
     // number to decimal
 
-    numberFind = number;
+    // numberFind = number;
     
-    for(int i=0; numberFind > 10; i++){
-        numberFind /= 10;
-        rest = numberFind % 10;
-        file[i] = (char)rest;
+    // for(int i=0; numberFind > 10; i++){
+    //     numberFind /= 10;
+    //     rest = numberFind % 10;
+    //     file[i] = (char)rest;
         
-    }
+    // }
 
     // ask if the baseFind is 10
-    if(baseFind != 10){
-        // order
-        elements = len(file);
-        for(int i=0; i >= elements; i++){
-            for(int j = elements; j >= i; j--){
-                fileOrder[i] = file[j];
-            }
-        }
-    }
+    // if(baseFind != 10){
+    //     // order
+    //     //elements = len(file);
+    //     for(int i=0; i >= elements; i++){
+    //         for(int j = elements; j >= i; j--){
+    //             fileOrder[i] = file[j];
+    //         }
+    //     }
+    // }
+
    // decimal to 
     
     // binary - hexadecimal
 
     // answers
-    printf("\n Number: %i\n Initial Base: %i\n\n NumberFind: %c\n Final Base: %i\n", number, base, numberFind, baseFind);
-    ast(1);
+
+    // printf("\n Number: %i\n Initial Base: %i\n\n NumberFind: %c\n Final Base: %i\n", number, base, numberFind, baseFind);
+    // ast(1);
 }
 
 void main(){
@@ -73,12 +96,13 @@ void main(){
         ast(2);
 
         if(op == 1){ 
-            changeBase();
+            //changeBase();
         }
-        // else if(op == 2){
-        //     // input the ecuations
-        //     // change the ecuations
-        // }
+        else if(op == 2){
+            // input the ecuations
+            inputEcuations();
+            // change the ecuations
+        }
         // else if(op == 3){
         //     // input de matrix
         //     // select matrix clasification
