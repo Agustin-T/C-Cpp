@@ -13,10 +13,12 @@ float inputEcuations(){
     int colum = 0;
 
     while(1){
-        printf("Input your polinomy nunber %i", cont);
+        printf("\nInput your polinomy nunber %i\n\n", cont);
         scanf("%S", &polynomis[colum][0]);
 
-        printf("You want added any more");
+        printf("\nYou want added any more\n");
+
+        lisenKeyboard();
 
         if(lisenKeyboard() != 1){
             // mostrar polinomios ingresados
@@ -25,6 +27,8 @@ float inputEcuations(){
         colum ++;
         cont +=1;
     }
+
+    print("HOla puto");
 }
 
 

@@ -16,3 +16,7 @@ int lisenKeyboard(){
         return 1;
     }
 }
+
+char print(char variable){
+    return variable;
+}
